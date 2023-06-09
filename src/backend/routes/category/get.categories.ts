@@ -4,10 +4,11 @@ import { StatusCodes } from 'http-status-codes'
 import { TRoute } from '../types'
 import { handleRequest } from '../../utils/request.utils'
 import { prisma } from '../../database'
+import { authorize } from '../../utils/middleware.utils'
 export default {
     method: 'get',
     path: '/api/category',
-    validators: [],
+    validators: [authorize],
     handler: async (req: Request, res: Response) =>
         handleRequest({
             req,
